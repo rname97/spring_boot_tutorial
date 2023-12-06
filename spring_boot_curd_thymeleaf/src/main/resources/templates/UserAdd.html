@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:employee="http://www.w3.org/1999/xhtml"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.thymeleaf.org">
+<head th:replace="_partials/header :: header"></head>
+<body>
+    <div th:replace="_partials/nav :: navbar"></div>
+    <div class="container mt-4">
+        <form action="#" th:action="@{/user/save}" th:object="${user}" method="POST">
+            <div class="card">
+                <div class="card-body">
+                    <div class="form-group">
+                        <label for="inputUserName">User</label>
+                        <input type="text" th:field="*{userName}" class="form-control" id="inputUserName" aria-describedby="inputUserNameHelp" placeholder="Enter User Name">
+                    </div>
+                    <div class="form-group">
+                        <label for="inputuserAddress">Description</label>
+                        <input type="text" th:field="*{userAddress}" class="form-control" id="inputuserAddress" aria-describedby="inputUserAddressHelp" placeholder="Enter description User">
+                    </div>
+                    <div class="form-group">
+                        <select th:field="*{hobie}" class="form-control">
+                            <option th:each="hobie:${allHobieList}" th:value="${hobie.hobieId}" th:text="${hobie.hobieName}"></option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <select th:field="*{profession}" class="form-control">
+                            <option th:each="profession:${allProfessionList}" th:value="${profession.professionId}" th:text="${profession.professionName}"></option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="my-3">
+                <button type="submit" class="btn btn-primary">Add Data</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

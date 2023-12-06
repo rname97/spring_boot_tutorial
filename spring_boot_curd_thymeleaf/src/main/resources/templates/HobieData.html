@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:employee="http://www.w3.org/1999/xhtml"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.thymeleaf.org">
+<head th:replace="_partials/header :: header"></head>
+<body>
+    <div th:replace="_partials/nav :: navbar"></div>
+    <div class="container my-2" align="center">
+        <h3>Hobie List</h3>
+        <a th:href="@{/hobie/viewAddHobie}" class="btn btn-primary btn-sm mb-3" >Add Hobie</a>
+        <table style="width:80%" border="1"
+               class = "table table-striped table-responsive-md">
+            <thead>
+            <tr>
+                <th>Hobie</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr th:each="hobie:${allHobieList}">
+                    <td th:text="${hobie.hobieName}"></td>
+                    <td>
+                        <a th:href="@{'/hobie/viewUpdateHobie/'+${hobie.hobieId}}" class="btn btn-primary btn-sm mb-3">update</a>
+                        <a th:href="@{'/hobie/deleteHobie/'+${hobie.hobieId}}" class="btn btn-danger btn-sm mb-3">delete</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
